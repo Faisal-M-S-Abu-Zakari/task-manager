@@ -1,9 +1,12 @@
+// store tasks 
 let Tasks=JSON.parse(localStorage.getItem('tasks')) || [];
+// func to save tasks in local storage 
 function saveTasks() {
     localStorage.setItem('tasks', JSON.stringify(Tasks));
 }
-
+// func to clear local storage
 const cls = () => localStorage.clear();
+// list of order 
 const tasksList = ()=>{
     console.log("")
     console.log("Task Manager Menu :");
@@ -17,12 +20,14 @@ const tasksList = ()=>{
     console.log("8. Exit")
     console.log("")
 }
+// func to add Tasks
 const addTask = ()=>{
     let add = prompt("Enter Your Task Description ");
     console.log("Task Added : " + add)
     add = add + " : " + "[Not Completed]"
     Tasks.push(add)
 }
+// func to view Tasks
 const view = ()=>{
     if(Tasks.length == 0){
         console.log("No Tasks Found");
@@ -34,6 +39,7 @@ const view = ()=>{
         })
     }
 }
+// fun to toggle completion Tasks according to specific id 
 const toggle =()=>{
     let id = prompt("Enter the task ID to toggle completion:");
     Tasks.map((task, index) => {
@@ -52,6 +58,7 @@ const toggle =()=>{
         }
     });
 }
+// func to edit tasks according to specific id 
 const edit = ()=>{
     let id1 = prompt("Enter the task ID to Edit:");
     let taskToEdit = Tasks.find((task, index) => index + 1 == id1);
@@ -65,6 +72,7 @@ const edit = ()=>{
         console.log("Task Not Found, please Enter Correct Task ID");
     }
 }
+// func to delete task according to specific id 
 const deleted = ()=>{
     let id2 = prompt("Enter the task ID to Delete:");
     let taskToDelete = Tasks.find((task, index) => index + 1 == id2);
@@ -77,6 +85,7 @@ const deleted = ()=>{
         console.log("Task Not Found, please Enter Correct Task ID");
     }
 }
+// func to search 
 const search = ()=>{
     let search = prompt("Enter the task name to search:");
     let found = false;
@@ -90,6 +99,7 @@ const search = ()=>{
         console.log("Task Not Found");
     }
 }
+// main func 
 const tasksManager = _ =>{
     tasksList();
     let taskNum = prompt("Enter Your Choice(1-8)",'');
